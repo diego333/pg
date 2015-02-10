@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SFprecio</title>
+  <script>
+	function calcular_precio(){
+		var radIva = document.getElementById("radIva");
+		var precio = document.getElementById("txtPrecio");
+		if(radIva.checked == true)
+		{	
+		 
+			var total=(precio.value*0.12);
+			//var preciofinal= total+precioIva;
+			alert("Precio anterior con iva :"+precio.value+"\n Incremento :"+total+"\n Precio de venta con iva:");
+
+			}
+	}
+  </script>
+</head>
+
+<body style="background-color:green">
+  <h1>Calculadora de Precios</h1>
+    <div style:>
+		<form>
+			<p> Precio :</p>
+			<input type="radio" name="iva" id="radIva" value="con iva" checked>con iva
+			<br>
+			<input type="radio" name="iva" id="radNoIva" value="sin iva" >sin iva
+			<br>			
+			<input type="text" id="txtPrecio" name="precio">
+			<button type="button" onClick="calcular_precio();">Calcular</button>
+		</form>
+    </div>
+</body>
+
+</html>
