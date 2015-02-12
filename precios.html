@@ -2,25 +2,48 @@
 <html>
 <head>
   <title>SFprecio</title>
+  <style>
+  #bg{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+.centrado {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+}
+  </style>
   <script>
 	function calcular_precio(){
 		var radIva = document.getElementById("radIva");
+		var radNoIva=document.getElementById("radNoIva");
 		var precio = document.getElementById("txtPrecio");
 		if(radIva.checked == true)
 		{	
 		 
 			var total=(precio.value*0.12);
-			//var preciofinal= total+precioIva;
-			alert("Precio anterior con iva :"+precio.value+"\n Incremento :"+total+"\n Precio de venta con iva:");
-
+			var res=(total+parseFloat(precio.value));
+			alert("Precio anterior CON iva :"+precio.value+"\n Incremento :"+total+"\n Precio de venta con iva:"+res);
 			}
+		else if(radNoIva.checked == true){
+			var valIva=(precio.value*0.05);
+			var precioIva=(valIva+parseFloat(precio.value));
+			var total= Math.round(precioIva*0.12);
+			var precioVenta=precioIva+total;
+			alert("Precio anterior SIN iva :"+precio.value+"\n Valor iva "+valIva+"\n Precio de entrada CON iva :"+precioIva+"\n Incremento :"+total+"\n Precio de venta con iva:"+precioVenta);
+		}
 	}
   </script>
 </head>
 
-<body style="background-color:green">
-  <h1>Calculadora de Precios</h1>
-    <div style:>
+<body style="background-color:green" >
+  
+  <img id="bg" src="/logo.jpg"  alt="background" />
+  
+  <h1 class="centrado">Calculadora de Precios</h1>
+    <div class="centrado" >
 		<form>
 			<p> Precio :</p>
 			<input type="radio" name="iva" id="radIva" value="con iva" checked>con iva
